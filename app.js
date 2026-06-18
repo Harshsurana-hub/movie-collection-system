@@ -1,6 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const studentRoutes = require("./routes/studentRoutes");
+const logger = require("./middleware/logger");
 // const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 
+app.use(logger);
 app.use("/", studentRoutes);
 // app.use(errorHandler);
 
