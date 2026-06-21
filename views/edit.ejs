@@ -3,21 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Movie Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
-    <form action="/update/<%=data.id%>" method="POST">
-    
-    <input type="text" name="name" placeholder="Enter Name" value="<%=data.name%>">
-    
-    <input type="number" name="age" placeholder="Enter Age" value="<%=data.age%>">
-    
-    <input type="email" name="email" placeholder="Enter Email" value="<%=data.email%>">
-    
-    <button type="submit">edit Student</button>
-
-</form>
-    
+    <div class="form-card">
+        <h2>📝 Edit Movie Details</h2>
+        <p style="color: #9ca3af; font-size: 14px; margin-bottom: 25px;">Modify existing records down below.</p>
+        
+        <form action="/update/<%= data._id %>" method="POST">
+            <div class="form-group">
+                <label>Movie Name</label>
+                <input type="text" name="movieName" value="<%= data.movieName %>" required>
+            </div>
+            <div class="form-group">
+                <label>Director</label>
+                <input type="text" name="director" value="<%= data.director %>" required>
+            </div>
+            <div class="form-group">
+                <label>Genre</label>
+                <input type="text" name="genre" value="<%= data.genre %>" required>
+            </div>
+            <div class="form-group">
+                <label>Release Year</label>
+                <input type="number" name="releaseYear" min="1880" max="2100" value="<%= data.releaseYear %>" required>
+            </div>
+            <div class="form-group">
+                <label>Rating (0.0 - 10.0)</label>
+                <input type="number" step="0.1" name="rating" min="0" max="10" value="<%= data.rating %>" required>
+            </div>
+            
+            <div class="action-buttons">
+                <button type="submit" class="btn btn-warning" style="flex: 1; color: #1a1a24;">Update Record</button>
+                <a href="/getdata" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

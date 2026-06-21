@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Records</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <h2>🎥 Total Collections</h2>
+            <form action="/getdata" method="GET" class="search-box">
+                <input type="text" name="search" placeholder="Search movie name..." value="<%= search %>">
+                <button type="submit" class="btn btn-primary">Search</button>
+                <% if(search) { %>
+                    <a href="/getdata" class="btn btn-secondary">Clear</a>
+                <% } %>
+            </form>
+            <a href="/insertdata" class="btn btn-success">+ Add Movie</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Movie Name</th>
+                    <th>Director</th>
+                    <th>Genre</th>
+                    <th>Release Year</th>
+                    <th>Rating</th>
+                    <th style="text-align: center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(allmovies.length > 0) { %>
+                    <% allmovies.forEach(movie => { %>
+                        <tr>
+                            <td><strong><%= movie.movieName %></strong></td>
+                            <td><%= movie.director %></td>
+                            <td><span style="background: #2d2d3f; padding: 4px 8px; border-radius: 4px; font-size: 13px;"><%= movie.genre %></span></td>
+                            <td><%= movie.releaseYear %></td>
+                            <td style="color: #f59e0b;">⭐ <%= movie.rating %>/10</td>
+                            <td style="text-align: center;">
+                                <a href="/edit/<%= movie._id %>" class="btn btn-warning" style="padding: 6px 12px; font-size: 13px;">Edit</a>
+                                <a href="/delete/<%= movie._id %>" class="btn btn-danger" style="padding: 6px 12px; font-size: 13px;" onclick="return confirm('Are you sure you want to remove this record?')">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: #9ca3af; padding: 30px;">No movies match your criteria or database is currently empty.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        
+        <br>
+        <a href="/" class="btn btn-secondary">← Back to Dashboard</a>
+    </div>
+</body>
+</html>

@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie Collection Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Lorem ipsum dolor sit.</h1>
-
-
-
-    <a href="http://localhost:3000/getdata">ALL student data</a>
-    <br><br>
-    <a href="http://localhost:3000/insertdata">add student  data</a>
-
+    <div class="container">
+        <div class="welcome-card">
+            <h1>🎬 Movie Collection System</h1>
+            <p style="color: #9ca3af; margin-bottom: 30px;">Manage, track, and search your personal cinema library seamlessly.</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="/getdata" class="btn btn-primary">🍿 View Movie Library</a>
+                <a href="/insertdata" class="btn btn-success">➕ Add New Movie</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
